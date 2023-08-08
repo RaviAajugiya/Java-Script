@@ -221,7 +221,7 @@ console.log(ravi.getSummary()); */
 
 // loops
 
-for(let rep = 1; rep <= 10; rep++){
+/* for(let rep = 1; rep <= 10; rep++){
     console.log(`lifting weight repetition ${rep}`);
 }
 
@@ -245,3 +245,51 @@ for(let i = 0; i < raviArray.length; i++){
 
 console.log(types);
 
+//continue and break
+
+for(let i = 0; i < raviArray.length; i++){
+    if (typeof raviArray[i] !== 'string') continue;
+    console.log(raviArray[i]);
+}
+
+
+for(let i = 0; i < raviArray.length; i++){
+    if (typeof raviArray[i] === 'number') break;
+    console.log(raviArray[i]);
+} */
+
+
+
+const raviArray = [
+    'Ravi',
+    'Aajugiya',
+    2023-2003,
+    'developer',
+    ['mihir', 'Chintu', 'Tapu']
+];
+
+for(let i = raviArray.length - 1; i >= 0; i--){
+    console.log(raviArray[i]);
+}
+
+for (let excercise = 0; excercise <= 3; excercise++) {
+    console.log(`--------starting excercise ${excercise}`);
+
+    for (let rep = 0; rep < 6; rep++) {
+        console.log(`lifting weight ${rep}`);
+    }
+}
+
+let rep = 1;
+while (rep <= 10){
+    console.log(`lifting weight ${rep}`);
+    rep++;
+}
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+console.log(dice);
+
+while (dice !== 6) {
+    console.log(dice);
+    dice = Math.trunc(Math.random() * 6) + 1;
+}
