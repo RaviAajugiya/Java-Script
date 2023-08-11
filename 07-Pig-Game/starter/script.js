@@ -55,7 +55,7 @@ hold.addEventListener('click', function () {
         document.querySelector(`#score--${activePlayer}`).innerHTML = currentScore + score[activePlayer];
         score[activePlayer] += currentScore;
 
-        if (score[activePlayer] >= 100) {
+        if (score[activePlayer] >= 20) {
             playing = false;
             img.classList.add('hidden');
             document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');

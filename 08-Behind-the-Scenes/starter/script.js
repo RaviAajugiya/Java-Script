@@ -1,5 +1,5 @@
 'use strict';
-
+console.warn()
 /* 
 function calcAge(birthYear) {
     const age = 2037 - birthYear;
@@ -139,12 +139,17 @@ var addArrow = (a, b) =>{
 
 addArrow(5,2) */
 
+
+/* 
+//primitive type
 let age = 30;
 let oldAge = age;
 age = 31;
 console.log(age);
 console.log(oldAge);
 
+
+//reference type
 const me = {
     name: 'Ravi',
     age: 30
@@ -154,4 +159,69 @@ const friend = me;
 friend.age = 27;
 console.log('friend', friend);
 console.log('me', me);
+
+
+//copying object
+
+const ravi = {
+    firstName : 'ravi',
+    lname : 'aajugiya',
+    age : 20,
+    family : ['a', 'b'],
+}
+
+const raviCopy = Object.assign({}, ravi);
+raviCopy.lname = 'Ajugiya'
+console.log(ravi);
+console.log(raviCopy);
+
+ravi.family.push('c');
+ravi.family.push('d');
+console.log(ravi);
+console.log(raviCopy);
+ */
+
+
+function printSubsequences(arr, index, output)
+{
+ 
+  // Print the subsequence when reach
+  // the leaf of recursion tree
+  if (index == arr.length)
+  {
+   
+    // Condition to avoid printing
+    // empty subsequence
+    if (output.length > 0) {
+        // document.write(`${path}<br>`)
+        console.log(output);
+    };
+  }
+  else
+  {
+   
+    // Subsequence without including
+    // the element at current index
+    printSubsequences(arr, index + 1, output);
+ 
+    output.push(arr[index]);
+ 
+    // Subsequence including the element
+    // at current index
+    printSubsequences(arr, index + 1, output);
+ 
+    // Backtrack to remove the recently
+    // inserted element
+    output.pop();
+  }
+  return;
+}
+ 
+// Driver code
+let arr = [1, 2, 3];
+ 
+// Auxiliary space to store each path
+let output = new Array();
+ 
+printSubsequences(arr, 0, output);
 

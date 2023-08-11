@@ -31,7 +31,7 @@ let checkNum = () => {
         }
     } else if (inputNum !== num) {
         if (score > 1) {
-            displayMessage(inputNum > inputNum ? '📈 Too high!' : '📉 Too low!');
+            displayMessage(inputNum > num ? '📈 Too high!' : '📉 Too low!');
         } else {
             displayMessage('💥 You lost the game!');
         }
