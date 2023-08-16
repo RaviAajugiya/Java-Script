@@ -71,7 +71,7 @@ const displayMovements = function (movements) {
     const html = `
     <div class="movements__row">
       <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
-      <div class="movements__value">${mov}</div>
+      <div class="movements__value">${mov}€</div>
     </div>
     `
     containerMovements.insertAdjacentHTML('afterbegin', html)
@@ -91,25 +91,33 @@ const createUserName = function (accs) {
 createUserName(accounts)
 console.log(accounts);
 
-const calcprintBalance = function (movements) {
+const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, curr) => acc + curr, 0);
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance}€`;
 }
 
-calcprintBalance(account1.movements);
+calcDisplayBalance(account1.movements);
 
-console.log('===============');
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}`
 
-console.log(movements);
-const max = movements.reduce((max, crr) => {
-  if (crr > max) {
-    return crr
-  }
-  else{
-    return max
-  }
-})
-console.log(max);
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}`
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => int >= 1)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumInterest.textContent = `${Math.abs(interest)}`
+
+}
+calcDisplaySummary(account1.movements)
 
 
 
@@ -300,10 +308,15 @@ GOOD LUCK 😀
 const dogs = [5, 2, 4, 1, 15, 8, 3];
 // const dogs = [16, 6, 10, 5, 6, 1, 4];
 
-const calcAverageHumanAge = function(dogs){
+const calcAverageHumanAge = function (dogs) {
   return dogs.map(age => age <= 2 ? 2 * age : 16 + age * 4)
-            .filter(humanAge => humanAge >= 18)
-            .reduce((acc, age) => acc + age)/5;
+    .filter(humanAge => humanAge >= 18)
+    .reduce((acc, age) => acc + age) / 5;
 }
 
 console.log(calcAverageHumanAge(dogs));
+
+
+
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(firstWithdrawal);
